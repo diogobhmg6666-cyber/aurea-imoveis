@@ -2,6 +2,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import ChatWidget from './ChatWidget'
+import WhatsAppButton from './WhatsAppButton'
+
+const WHATSAPP_NUMERO = '5531999990000'  // formato: 55 + DDD + número, sem espaços ou hífen
+const INSTAGRAM_URL = 'https://instagram.com/bemmorarimoveis'  // troque pelo seu @
+const FACEBOOK_URL = '#'  // opcional
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
@@ -27,8 +32,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header className="header">
         <div className="container header-inner">
           <Link href="/" className="logo">
-            <span className="logo-mark">A</span>
-            <span className="logo-text">aurea<span className="logo-dot">.</span></span>
+            <span className="logo-mark">B</span>
+            <span className="logo-text">bem morar<span className="logo-dot">.</span></span>
           </Link>
 
           <nav className="nav">
@@ -53,10 +58,32 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="container footer-inner">
           <div className="footer-brand">
             <div className="logo">
-              <span className="logo-mark">A</span>
-              <span className="logo-text">aurea<span className="logo-dot">.</span></span>
+              <span className="logo-mark">B</span>
+              <span className="logo-text">bem morar<span className="logo-dot">.</span></span>
             </div>
-            <p className="footer-tag">Imóveis selecionados com curadoria especializada.</p>
+            <p className="footer-tag">Pra você morar bem, com calma e com a casa certa.</p>
+            <div className="footer-social">
+              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.5"/>
+                  <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.5"/>
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                </svg>
+              </a>
+              <a href={`https://wa.me/${WHATSAPP_NUMERO}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+              {FACEBOOK_URL !== '#' && (
+                <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              )}
+            </div>
           </div>
           <div className="footer-cols">
             <div>
@@ -68,25 +95,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <h4>Contato</h4>
               <a>Belo Horizonte, MG</a>
-              <a>+55 31 0000-0000</a>
-              <a>contato@aurea.com</a>
+              <a href={`https://wa.me/${WHATSAPP_NUMERO}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a>contato@bemmorar.com.br</a>
             </div>
           </div>
         </div>
         <div className="footer-base">
-          <span>© 2026 Aurea Imóveis · Todos os direitos reservados</span>
+          <span>© 2026 Bem Morar Imóveis · Todos os direitos reservados</span>
         </div>
       </footer>
 
-      {/* Chat flutuante presente em todas as páginas */}
       <ChatWidget />
+      <WhatsAppButton numero={WHATSAPP_NUMERO} />
 
       <style jsx>{`
         .header {
           position: sticky;
           top: 0;
           z-index: 100;
-          background: rgba(250, 247, 242, 0.85);
+          background: rgba(250, 245, 236, 0.85);
           backdrop-filter: blur(12px);
           border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
@@ -106,7 +133,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         .logo-mark {
           width: 36px;
           height: 36px;
-          background: var(--teal-deep);
+          background: var(--terracotta);
           color: var(--cream);
           border-radius: 50%;
           display: grid;
@@ -115,18 +142,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           font-size: 1.1rem;
         }
         .logo-text { font-style: italic; letter-spacing: -0.02em; }
-        .logo-dot { color: var(--terracotta); }
+        .logo-dot { color: var(--gold); }
 
-        .nav {
-          display: flex;
-          align-items: center;
-          gap: 32px;
-        }
+        .nav { display: flex; align-items: center; gap: 32px; }
         .nav a {
           font-size: 0.9rem;
           color: var(--graphite);
           font-weight: 400;
-          letter-spacing: 0.01em;
           transition: color 0.2s;
           position: relative;
         }
@@ -139,10 +161,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           height: 1px;
           background: var(--terracotta);
         }
-        .nav-btn {
-          font-size: 0.9rem;
-          color: var(--graphite);
-        }
+        .nav-btn { font-size: 0.9rem; color: var(--graphite); }
         .nav-btn:hover { color: var(--ink); }
         .nav-btn-primary {
           padding: 10px 20px;
@@ -151,7 +170,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           border-radius: 999px;
           font-size: 0.85rem;
         }
-        .nav-btn-primary:hover { background: var(--teal-deep); }
+        .nav-btn-primary:hover { background: var(--terracotta); }
 
         .footer {
           background: var(--ink);
@@ -174,6 +193,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           color: var(--whisper);
           max-width: 280px;
           line-height: 1.4;
+        }
+        .footer-social {
+          display: flex;
+          gap: 12px;
+          margin-top: 24px;
+        }
+        .footer-social a {
+          display: grid;
+          place-items: center;
+          width: 38px;
+          height: 38px;
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 50%;
+          color: var(--whisper);
+          transition: all 0.2s;
+        }
+        .footer-social a:hover {
+          background: var(--terracotta);
+          color: var(--cream);
+          border-color: var(--terracotta);
         }
         .footer-cols {
           display: grid;
