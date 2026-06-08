@@ -30,14 +30,14 @@ export default function Home() {
         <div className="hero-bg" />
         <div className="container hero-inner">
           <div className="hero-content">
-            <span className="kicker fade-up">Curadoria especializada · 2026</span>
+            <span className="kicker fade-up">Pra você morar bem · 2026</span>
             <h1 className="fade-up" style={{ animationDelay: '100ms' }}>
-              O imóvel certo,<br/>
-              <span className="italic">com a história</span> certa.
+              A sua próxima casa,<br/>
+              <span className="italic">com o cuidado</span> que ela merece.
             </h1>
             <p className="hero-tag fade-up" style={{ animationDelay: '200ms' }}>
-              Mais de 200 imóveis selecionados em Belo Horizonte e região,
-              com atendimento inteligente 24 horas pela nossa IA.
+              Imóveis selecionados com calma, atendimento humano de verdade
+              e uma IA simpática chamada Judite pra te ajudar a qualquer hora.
             </p>
 
             <form className="hero-search fade-up" style={{ animationDelay: '300ms' }} onSubmit={buscar}>
@@ -80,15 +80,15 @@ export default function Home() {
           </div>
 
           <div className="hero-img fade-up" style={{ animationDelay: '400ms' }}>
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400" alt="Imóvel sofisticado" />
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400" alt="Casa acolhedora" />
             <div className="hero-img-overlay">
               <div className="hero-stat">
-                <div className="num">200+</div>
-                <div className="lbl">Imóveis selecionados</div>
+                <div className="num">+</div>
+                <div className="lbl">Imóveis com cuidado</div>
               </div>
               <div className="hero-stat">
                 <div className="num">24h</div>
-                <div className="lbl">Atendimento IA</div>
+                <div className="lbl">A Judite responde</div>
               </div>
             </div>
           </div>
@@ -98,9 +98,9 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <span className="kicker">Destaques da semana</span>
-            <h2>Imóveis em <span className="italic">evidência</span></h2>
-            <p className="section-sub">Uma seleção pessoal dos imóveis mais especiais do nosso portfólio.</p>
+            <span className="kicker">Selecionados da semana</span>
+            <h2>Pra você <span className="italic">já se imaginar morando</span></h2>
+            <p className="section-sub">Olha os imóveis que separamos com mais carinho pra você.</p>
           </div>
           <div className="grid">
             {destaques.map((i, idx) => (
@@ -121,21 +121,21 @@ export default function Home() {
       <section className="diff">
         <div className="container diff-inner">
           <div className="diff-text">
-            <span className="kicker">Como trabalhamos</span>
-            <h2>Tecnologia que <span className="italic">conversa</span><br/>com você.</h2>
+            <span className="kicker">Como a gente trabalha</span>
+            <h2>Tecnologia <span className="italic">que acolhe</span>,<br/>gente <span className="italic">que cuida</span>.</h2>
             <p>
-              Nossa assistente de IA <strong>Aurea</strong> está disponível 24 horas
-              pra entender o que você procura, mostrar imóveis que combinam com seu perfil
-              e te conectar com um corretor humano quando for a hora certa.
+              A nossa <strong>Judite</strong> é uma assistente de IA carinhosa que conversa com você
+              24 horas, entende o que você procura, mostra imóveis no seu jeito
+              e te conecta com um corretor humano quando for a hora certa.
             </p>
             <p>
-              Sem formulários longos. Sem ligações invasivas.
-              Apenas uma conversa natural, no seu ritmo.
+              Sem formulários longos. Sem ligação intrometida.
+              Só uma boa conversa, no seu tempo. ✨
             </p>
             <div className="diff-stats">
               <div>
                 <div className="num">3 min</div>
-                <div className="lbl">Tempo médio até encontrar opções</div>
+                <div className="lbl">Pra encontrar opções com a Judite</div>
               </div>
               <div>
                 <div className="num">100%</div>
@@ -145,9 +145,9 @@ export default function Home() {
           </div>
           <div className="diff-visual">
             <div className="chat-mock">
-              <div className="mock-msg user">Quero um apartamento em Lourdes com 3 quartos até 1 milhão</div>
-              <div className="mock-msg bot">Encontrei 3 opções incríveis em Lourdes! Quer ver os detalhes?</div>
-              <div className="mock-msg user">Sim!</div>
+              <div className="mock-msg user">Tô procurando um apartamento de 2 quartos por aqui no Buritis</div>
+              <div className="mock-msg bot">Achei 3 opções lindas no Buritis! 💛 Quer ver?</div>
+              <div className="mock-msg user">Quero!</div>
             </div>
           </div>
         </div>
@@ -163,8 +163,8 @@ export default function Home() {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(circle at 80% 20%, rgba(184, 105, 78, 0.06), transparent 50%),
-            radial-gradient(circle at 20% 80%, rgba(31, 58, 61, 0.05), transparent 50%);
+            radial-gradient(circle at 80% 20%, rgba(194, 101, 74, 0.08), transparent 50%),
+            radial-gradient(circle at 20% 80%, rgba(184, 149, 106, 0.06), transparent 50%);
           z-index: -1;
         }
         .hero-inner {
@@ -189,7 +189,7 @@ export default function Home() {
           color: var(--ink);
           margin-bottom: 24px;
         }
-        .italic { font-style: italic; color: var(--teal-deep); }
+        .italic { font-style: italic; color: var(--terracotta); }
         .hero-tag {
           font-size: 1.1rem;
           color: var(--graphite);
@@ -251,19 +251,19 @@ export default function Home() {
           outline: none;
           transition: border-color 0.2s;
         }
-        .field select:focus, .field input:focus { border-color: var(--teal); }
+        .field select:focus, .field input:focus { border-color: var(--terracotta); }
         .btn-search {
           display: flex;
           align-items: center;
           gap: 8px;
-          background: var(--teal-deep);
+          background: var(--terracotta);
           color: var(--cream);
           padding: 13px 24px;
           border-radius: 10px;
           font-weight: 500;
           transition: background 0.2s;
         }
-        .btn-search:hover { background: var(--teal); }
+        .btn-search:hover { background: var(--terracotta-deep); }
 
         .hero-img {
           position: relative;
@@ -280,7 +280,7 @@ export default function Home() {
           bottom: 20px;
           left: 20px;
           right: 20px;
-          background: rgba(250, 247, 242, 0.96);
+          background: rgba(250, 245, 236, 0.96);
           backdrop-filter: blur(12px);
           padding: 20px;
           border-radius: 14px;
@@ -291,7 +291,7 @@ export default function Home() {
         .hero-stat .num {
           font-family: var(--font-display);
           font-size: 2rem;
-          color: var(--teal-deep);
+          color: var(--terracotta);
           font-style: italic;
           line-height: 1;
           margin-bottom: 4px;
@@ -342,7 +342,7 @@ export default function Home() {
           margin: 16px 0 24px;
           color: var(--cream);
         }
-        .diff-text .italic { color: var(--terracotta); }
+        .diff-text .italic { color: var(--gold); }
         .diff-text p {
           color: var(--whisper);
           margin-bottom: 16px;
@@ -360,7 +360,7 @@ export default function Home() {
         .diff-stats .num {
           font-family: var(--font-display);
           font-size: 2.5rem;
-          color: var(--terracotta);
+          color: var(--gold);
           font-style: italic;
           line-height: 1;
         }
@@ -386,7 +386,7 @@ export default function Home() {
           max-width: 85%;
         }
         .mock-msg.user {
-          background: var(--teal-deep);
+          background: var(--terracotta);
           color: var(--cream);
           align-self: flex-end;
           border-radius: 18px 18px 4px 18px;
