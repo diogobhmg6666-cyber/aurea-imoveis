@@ -13,7 +13,7 @@ export default function ChatWidget() {
   const [visiveis, setVisiveis] = useState<Mensagem[]>([
     {
       role: 'assistant',
-      content: 'Olá! Sou a Aurea, sua assistente. Posso ajudar a encontrar o imóvel ideal pra você. O que está buscando?'
+      content: 'Oi! Sou a Judite, da Bem Morar. 💛 Posso te ajudar a encontrar o imóvel ideal pra você. O que você está buscando?'
     },
   ])
   const fimRef = useRef<HTMLDivElement>(null)
@@ -22,11 +22,9 @@ export default function ChatWidget() {
     fimRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [visiveis])
 
-  // Detecta se o usuário é corretor logado
   const ehCorretor = typeof window !== 'undefined' && !!localStorage.getItem('token')
   const role: 'cliente' | 'corretor' = ehCorretor && router.pathname.startsWith('/corretor') ? 'corretor' : 'cliente'
 
-  // Contexto da página atual
   const contextoPagina = (() => {
     if (router.pathname.startsWith('/imoveis/') && router.query.id) {
       return { pagina: 'detalhes_imovel', imovel_id: Number(router.query.id) }
@@ -55,7 +53,7 @@ export default function ChatWidget() {
       setVisiveis((m) => [...m, { role: 'assistant', content: res.resposta }])
       setHistorico(res.historico)
     } catch (err: any) {
-      setVisiveis((m) => [...m, { role: 'assistant', content: '⚠️ Ops, não consegui processar. Tente novamente.' }])
+      setVisiveis((m) => [...m, { role: 'assistant', content: '⚠️ Ops, tive um probleminha. Pode tentar de novo?' }])
     } finally {
       setCarregando(false)
     }
@@ -63,7 +61,6 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Botão flutuante */}
       <button
         className={`chat-fab ${aberto ? 'oculto' : ''}`}
         onClick={() => setAberto(true)}
@@ -73,16 +70,15 @@ export default function ChatWidget() {
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
             stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-        <span>Fale com a Aurea</span>
+        <span>Fale com a Judite</span>
       </button>
 
-      {/* Painel do chat */}
       <div className={`chat-panel ${aberto ? 'visivel' : ''}`}>
         <div className="chat-header">
           <div className="chat-id">
-            <div className="avatar">A</div>
+            <div className="avatar">J</div>
             <div>
-              <div className="nome">Aurea <span className="badge">IA</span></div>
+              <div className="nome">Judite <span className="badge">IA</span></div>
               <div className="status"><span className="dot"></span> Online agora</div>
             </div>
           </div>
@@ -95,9 +91,7 @@ export default function ChatWidget() {
 
         <div className="chat-msgs">
           {visiveis.map((m, i) => (
-            <div key={i} className={`msg ${m.role}`}>
-              {m.content}
-            </div>
+            <div key={i} className={`msg ${m.role}`}>{m.content}</div>
           ))}
           {carregando && (
             <div className="msg assistant typing">
@@ -107,10 +101,7 @@ export default function ChatWidget() {
           <div ref={fimRef} />
         </div>
 
-        <form
-          className="chat-input"
-          onSubmit={(e) => { e.preventDefault(); enviar() }}
-        >
+        <form className="chat-input" onSubmit={(e) => { e.preventDefault(); enviar() }}>
           <input
             type="text"
             value={texto}
@@ -136,18 +127,18 @@ export default function ChatWidget() {
           align-items: center;
           gap: 10px;
           padding: 14px 22px;
-          background: var(--teal-deep);
+          background: var(--terracotta);
           color: var(--cream);
           border-radius: 999px;
           font-weight: 500;
           font-size: 0.9rem;
-          box-shadow: 0 8px 32px rgba(31, 58, 61, 0.3);
+          box-shadow: 0 8px 32px rgba(194, 101, 74, 0.3);
           transition: all 0.3s ease;
         }
         .chat-fab:hover {
-          background: var(--teal);
+          background: var(--terracotta-deep);
           transform: translateY(-2px);
-          box-shadow: 0 12px 40px rgba(31, 58, 61, 0.4);
+          box-shadow: 0 12px 40px rgba(194, 101, 74, 0.4);
         }
         .chat-fab.oculto {
           opacity: 0;
@@ -182,7 +173,7 @@ export default function ChatWidget() {
         }
 
         .chat-header {
-          background: var(--teal-deep);
+          background: var(--terracotta);
           color: var(--cream);
           padding: 18px 20px;
           display: flex;
@@ -194,7 +185,7 @@ export default function ChatWidget() {
           width: 40px; height: 40px;
           border-radius: 50%;
           background: var(--cream);
-          color: var(--teal-deep);
+          color: var(--terracotta);
           display: grid;
           place-items: center;
           font-family: var(--font-display);
@@ -213,7 +204,7 @@ export default function ChatWidget() {
           font-family: var(--font-body);
           font-style: normal;
           font-size: 0.6rem;
-          background: var(--terracotta);
+          background: var(--gold);
           color: var(--cream);
           padding: 2px 6px;
           border-radius: 4px;
@@ -222,7 +213,7 @@ export default function ChatWidget() {
         }
         .status {
           font-size: 0.7rem;
-          color: var(--whisper);
+          color: var(--ivory);
           display: flex;
           align-items: center;
           gap: 6px;
@@ -265,7 +256,7 @@ export default function ChatWidget() {
           to { opacity: 1; transform: translateY(0); }
         }
         .msg.user {
-          background: var(--teal-deep);
+          background: var(--terracotta);
           color: var(--cream);
           align-self: flex-end;
           border-radius: 18px 18px 4px 18px;
@@ -312,10 +303,10 @@ export default function ChatWidget() {
           color: var(--ink);
           transition: border-color 0.2s;
         }
-        .chat-input input:focus { border-color: var(--teal); }
+        .chat-input input:focus { border-color: var(--terracotta); }
         .chat-input button[type="submit"] {
           width: 44px; height: 44px;
-          background: var(--teal-deep);
+          background: var(--terracotta);
           color: var(--cream);
           border-radius: 50%;
           display: grid;
@@ -323,7 +314,7 @@ export default function ChatWidget() {
           transition: all 0.2s;
         }
         .chat-input button[type="submit"]:hover:not(:disabled) {
-          background: var(--teal);
+          background: var(--terracotta-deep);
           transform: scale(1.05);
         }
         .chat-input button[type="submit"]:disabled {
